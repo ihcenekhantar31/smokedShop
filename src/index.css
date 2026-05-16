@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-brand-orange: #d35400;
+  --color-brand-orange-light: #e67e22;
+  --color-brand-cream: #fdfafa;
+  --color-brand-dark: #0f0f0f;
+
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-brand-cream);
+    color: var(--color-brand-dark);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-8 py-3 bg-brand-orange text-white font-semibold uppercase tracking-wider rounded transition-all duration-300 hover:bg-brand-orange-light hover:-translate-y-1 shadow-lg hover:shadow-xl;
+  }
+
+  .btn-outline {
+    @apply px-8 py-3 border border-brand-orange text-brand-orange font-semibold uppercase tracking-wider rounded transition-all duration-300 hover:bg-brand-orange hover:text-white;
+  }
+
+  .glass-header {
+    @apply bg-black/90 backdrop-blur-md text-white;
+  }
+}
+
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fdfafa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d35400;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e67e22;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeSlideUp {
+  animation: fadeSlideUp 0.45s ease-out both;
+}
+
+.free-shipping-message {
+  overflow: hidden;
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease,
+    max-height 0.45s ease,
+    margin-top 0.45s ease;
+}
+
+.free-shipping-visible {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 80px;
+}
+
+.free-shipping-hidden {
+  opacity: 0;
+  transform: translateY(-8px);
+  max-height: 0;
+  margin-top: 0;
+  pointer-events: none;
+}
