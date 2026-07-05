@@ -44,6 +44,8 @@ const deliveryZones = {
   },
 };
 
+const FREE_DELIVERY_THRESHOLD = 80;
+
 const normalizePostalCode = (value) => {
   return value.toUpperCase().replace(/\s+/g, "").trim();
 };
@@ -109,9 +111,10 @@ const Cart = () => {
   });
 
   const deliveryFee =
-    cartTotal >= 200 ? 0 : deliveryResult?.success ? deliveryResult.fee : 0;
+    cartTotal >= FREE_DELIVERY_THRESHOLD ? 0 : deliveryResult?.success ? deliveryResult.fee : 0;
 
   const finalTotal = cartTotal + deliveryFee;
+  const amountUntilFreeDelivery = Math.max(FREE_DELIVERY_THRESHOLD - cartTotal, 0).toFixed(2);
 
   const handleCalculateDelivery = () => {
     const result = calculateDeliveryFee(postalCode);
@@ -168,11 +171,12 @@ const Cart = () => {
 
               <div className="divide-y divide-gray-100">
                 {cartItems.map((item) => {
-                  const name = t(`products.${item.id}.name`, {
+                  const prodId = item.productId || item.id;
+                  const name = t(`products.${prodId}.name`, {
                     defaultValue: item.name,
                   });
 
-                  const category = t(`products.${item.id}.category`, {
+                  const category = t(`products.${prodId}.category`, {
                     defaultValue: item.category,
                   });
 
@@ -196,11 +200,17 @@ const Cart = () => {
                           </div>
 
                           <Link
-                            to={`/product/${item.id}`}
+                            to={`/product/${prodId}`}
                             className="font-serif text-lg font-bold hover:text-brand-orange transition-colors"
                           >
                             {name}
                           </Link>
+
+                          {item.selectedSize && (
+                            <div className="text-xs font-semibold text-brand-dark bg-brand-cream/80 px-2 py-1 rounded w-fit mt-1 border border-brand-orange/20">
+                              {t('product.size') || 'Size'}: {item.selectedSize}
+                            </div>
+                          )}
 
                           <div className="text-gray-500 mt-1">
                             ${item.price.toFixed(2)}
@@ -253,17 +263,16 @@ const Cart = () => {
             </div>
 
             <div
-              className={`free-shipping-message mt-3 ${cartTotal < 200 ? "free-shipping-visible" : "free-shipping-hidden"
+              className={`free-shipping-message mt-3 ${cartTotal < FREE_DELIVERY_THRESHOLD ? "free-shipping-visible" : "free-shipping-hidden"
                 }`}
             >
               <div className="hidden md:grid grid-cols-12 items-center">
-                <p className="col-start-7 col-span-3 text-sm font-serif italic tracking-wide text-gray-600">
-                  Pour une livraison gratuite, il vous reste
+                <p className="col-start-7 col-span-5 text-sm font-serif italic tracking-wide text-gray-600">
+                  {t('cart.free_delivery_threshold')}.{" "}
+                  <span className="font-bold text-brand-orange">
+                    {t('cart.free_delivery_remaining', { amount: `$${amountUntilFreeDelivery}` })}
+                  </span>
                 </p>
-
-                <span className="col-start-11 col-span-1 text-right text-sm font-serif font-bold italic text-brand-orange">
-                  ${Math.max(200 - cartTotal, 0).toFixed(2)}
-                </span>
               </div>
 
               <div className="hidden md:grid grid-cols-12 mt-1">
@@ -277,9 +286,9 @@ const Cart = () => {
 
               <div className="md:hidden pl-4">
                 <p className="text-sm font-serif italic tracking-wide text-gray-600">
-                  Pour une livraison gratuite, il vous reste{" "}
+                  {t('cart.free_delivery_threshold')}{" "}
                   <span className="font-bold text-brand-orange">
-                    ${Math.max(200 - cartTotal, 0).toFixed(2)}
+                    {t('cart.free_delivery_remaining', { amount: `$${amountUntilFreeDelivery}` })}
                   </span>
                 </p>
 
@@ -452,7 +461,7 @@ const Cart = () => {
                 <div className="flex justify-between text-gray-300">
                   <span>{t('cart.shipping')}</span>
                   <span>
-                    {cartTotal >= 200
+                    {cartTotal >= FREE_DELIVERY_THRESHOLD
                       ? "Free"
                       : deliveryResult?.success
                         ? `$${deliveryFee.toFixed(2)}`

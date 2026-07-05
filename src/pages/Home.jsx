@@ -31,6 +31,14 @@ const Home = () => {
       image: '/images/categories/sweats.jpg',
       link: '/categories?category=Sweet Delight',
     },
+    {
+      title: t('categories.frozen_veg_fruits'),
+      description: t('home.categories.frozen_veg_fruits_desc'),
+      image: '/images/frozen veg fruits categorie image.png',
+      link: '/categories?category=Frozen Veg Fruits',
+      secondaryLink: '/categories?category=Other Products',
+      secondaryLabel: t('home.shop_other_products'),
+    },
   ];
 
   const specials = [
@@ -61,15 +69,24 @@ const Home = () => {
           <img
             src="/images/home page image.png"
             alt="Smoked salmon"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-[70%_center] md:object-center"
           />
 
-          {/* Left dark only / right clear */}
+          {/* Desktop gradient: left to right */}
           <div
-            className="absolute inset-0"
+            className="hidden md:block absolute inset-0"
             style={{
               background:
                 "linear-gradient(to right, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.90) 22%, rgba(0,0,0,0.50) 38%, rgba(0,0,0,0.12) 52%, rgba(0,0,0,0.02) 100%)",
+            }}
+          />
+
+          {/* Mobile gradient: top to bottom, much darker at top for text readability */}
+          <div
+            className="md:hidden absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.4) 100%)",
             }}
           />
         </div>
@@ -196,7 +213,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 0.9, ease: 'easeOut' }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+                className={`relative grid grid-cols-1 md:grid-cols-2 gap-8 items-center ${category.secondaryLink ? 'pb-16 md:pb-14' : ''}`}
               >
                 <div className={index % 2 !== 0 ? 'md:order-2' : ''}>
                   <div className="h-[360px] rounded-2xl overflow-hidden shadow-2xl">
@@ -228,6 +245,15 @@ const Home = () => {
                     {t('home.view_products')}
                   </Link>
                 </div>
+
+                {category.secondaryLink && (
+                  <Link
+                    to={category.secondaryLink}
+                    className="absolute bottom-0 right-0 text-right text-brand-orange border-b border-brand-orange/40 pb-1 text-[15px] font-extrabold uppercase tracking-[0.1em] hover:border-brand-orange hover:text-brand-orange/80 transition-all duration-300"
+                  >
+                    {category.secondaryLabel}
+                  </Link>
+                )}
               </motion.div>
             ))}
           </div>

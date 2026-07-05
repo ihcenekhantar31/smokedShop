@@ -13,10 +13,16 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
 
   const product = products.find(p => p.id === parseInt(id));
+  const [selectedSize, setSelectedSize] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [id]);
+    if (product && product.sizes && product.sizes.length > 0) {
+      setSelectedSize(product.sizes[0].size);
+    } else {
+      setSelectedSize(null);
+    }
+  }, [id, product]);
 
   if (!product) {
     return (
@@ -32,6 +38,10 @@ const ProductDetails = () => {
   const name = t(`products.${product.id}.name`, { defaultValue: product.name });
   const description = t(`products.${product.id}.description`, { defaultValue: product.description });
   const category = t(`products.${product.id}.category`, { defaultValue: product.category });
+  const usesContainedImage = product.category === 'Frozen Veg Fruits' || product.category === 'Other Products';
+
+  const activeVariant = product.sizes ? product.sizes.find(s => s.size === selectedSize) : null;
+  const currentPrice = activeVariant ? activeVariant.price : product.price;
 
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
@@ -42,9 +52,12 @@ const ProductDetails = () => {
   };
 
   const handleAddToCart = () => {
-    for (let i = 0; i < quantity; i++) {
-      addToCart(product);
-    }
+    const productToAdd = {
+      ...product,
+      selectedSize: selectedSize || undefined,
+      price: currentPrice
+    };
+    addToCart(productToAdd, quantity);
   };
 
   return (
@@ -62,11 +75,11 @@ const ProductDetails = () => {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16">
 
           {/* Image */}
-          <div className="flex-1 bg-gray-50 rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+          <div className={`flex-1 rounded-2xl overflow-hidden shadow-lg border border-gray-100 ${usesContainedImage ? 'bg-white p-6 min-h-[420px] flex items-center justify-center' : 'bg-gray-50'}`}>
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-full max-h-[520px] object-cover transform hover:scale-105 transition-transform duration-700"
+              className={`w-full h-full max-h-[520px] object-center transition-transform duration-700 ${usesContainedImage ? 'object-contain' : 'object-cover transform hover:scale-105'}`}
             />
           </div>
 
@@ -85,48 +98,78 @@ const ProductDetails = () => {
               {description}
             </p>
 
-            <div className="flex items-end gap-4 mb-10">
-              <p className="text-3xl font-light">
-                ${product.price.toFixed(2)}
-              </p>
+            {/* Size & Purchase Block */}
+            <div className={`flex flex-col ${product.sizes ? 'md:flex-row md:items-end' : ''} gap-8 mb-10`}>
+              {/* Size Selector */}
+              {product.sizes && (
+                <div className="w-full md:w-1/2">
+                  <span className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">
+                    {t('product.select_size') || 'Select Size'}:{' '}
+                    <span className="text-brand-orange font-bold font-serif text-sm ml-1">
+                      {activeVariant ? `${activeVariant.size} — ${t(activeVariant.labelKey, { defaultValue: activeVariant.label })}` : ''}
+                    </span>
+                  </span>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {product.sizes.map((variant) => (
+                      <button
+                        key={variant.size}
+                        onClick={() => setSelectedSize(variant.size)}
+                        className={`px-3 py-2 rounded-lg border font-bold text-xs tracking-wider transition-all duration-300 text-center ${
+                          selectedSize === variant.size
+                            ? 'border-brand-orange bg-brand-orange text-white shadow-md shadow-brand-orange/20'
+                            : 'border-gray-200 text-gray-700 bg-gray-50 hover:border-brand-orange/50 hover:bg-brand-cream/30'
+                        }`}
+                      >
+                        {variant.size}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-              <p className="text-sm text-gray-500 mb-1">
-                {t('product.weight_1lbs')}
-              </p>
-            </div>
+              {/* Purchase Details */}
+              <div className={`w-full ${product.sizes ? 'md:w-1/2' : ''} flex flex-col justify-end`}>
+                <div className="flex items-end gap-4 mb-4">
+                  <p className="text-3xl font-light">
+                    ${currentPrice.toFixed(2)}
+                  </p>
 
-            {/* Quantity + Add to Cart */}
-            <div className="flex items-center gap-4 mb-10">
-
-              <div className="flex items-center bg-white border border-brand-orange rounded-lg overflow-hidden h-[56px]">
-                <div className="flex flex-col border-r border-brand-orange">
-                  <button
-                    onClick={increaseQuantity}
-                    className="w-10 h-7 bg-brand-orange text-black font-bold hover:bg-black hover:text-white transition-colors"
-                  >
-                    +
-                  </button>
-
-                  <button
-                    onClick={decreaseQuantity}
-                    className="w-10 h-7 bg-brand-orange text-black font-bold hover:bg-black hover:text-white transition-colors"
-                  >
-                    -
-                  </button>
+                  <p className="text-sm text-gray-500 mb-1">
+                    {t('product.weight_1lbs')}
+                  </p>
                 </div>
 
-                <div className="w-14 text-center text-black font-bold">
-                  {quantity}
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center bg-white border border-brand-orange rounded-lg overflow-hidden h-[56px] flex-shrink-0">
+                    <div className="flex flex-col border-r border-brand-orange">
+                      <button
+                        onClick={increaseQuantity}
+                        className="w-10 h-7 bg-brand-orange text-black font-bold hover:bg-black hover:text-white transition-colors"
+                      >
+                        +
+                      </button>
+
+                      <button
+                        onClick={decreaseQuantity}
+                        className="w-10 h-7 bg-brand-orange text-black font-bold hover:bg-black hover:text-white transition-colors"
+                      >
+                        -
+                      </button>
+                    </div>
+
+                    <div className="w-14 text-center text-black font-bold">
+                      {quantity}
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={handleAddToCart}
+                    className="flex-grow bg-brand-orange text-white px-4 py-4 rounded font-bold uppercase tracking-widest hover:bg-black transition-colors h-[56px] flex items-center justify-center text-xs sm:text-sm font-bold text-center"
+                  >
+                    {t('product.add_to_cart_price', { price: (currentPrice * quantity).toFixed(2) })}
+                  </button>
                 </div>
               </div>
-
-              <button
-                onClick={handleAddToCart}
-                className="bg-brand-orange text-white px-8 py-4 rounded font-bold uppercase tracking-widest hover:bg-black transition-colors"
-              >
-                {t('product.add_to_cart_price', { price: (product.price * quantity).toFixed(2) })}
-              </button>
-
             </div>
 
             {/* Product Notes */}
@@ -135,7 +178,6 @@ const ProductDetails = () => {
               <p>✓ {t('product.delivery_time')}</p>
               <p>✓ {t('product.delivery_fee')}</p>
             </div>
-
           </div>
         </div>
       </div>

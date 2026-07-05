@@ -33,13 +33,14 @@
     "collections_title": "Explore Our Categories",
     "category_tag": "Category",
     "view_products": "View Products",
+    "shop_other_products": "Shop other products",
     "logistics_tag": "Logistics & Care",
     "delivery_title": "Delivery Zone",
     "delivery_desc": "We deliver to the majority of the metropolitan area with reliable local service and careful order handling. Check the map to see our main delivery zones.",
     "delivery_notice_title": "Delivery Notice",
     "delivery_notice_text": "Some deliveries might take more time than usual, between 24 to 36 hours.",
     "free_delivery_title": "Free Delivery",
-    "free_delivery_text": "All deliveries over $150 are free.",
+    "free_delivery_text": "Free delivery on orders over $80",
     "view_policy": "View Full Policy",
     
     "specials": {
@@ -54,7 +55,8 @@
       "smoked_collection_desc": "Explore our signature smoked selection, chosen for rich flavor, texture, and elegant presentation.",
       "seafood_desc": "Selected seafood products to complete your table with premium taste and variety.",
       "dumplings_desc": "Comforting dumplings and pelmeni selected for simple, satisfying meals.",
-      "sweet_delight_desc": "A refined sweet selection to complete your order with elegant treats."
+      "sweet_delight_desc": "A refined sweet selection to complete your order with elegant treats.",
+      "frozen_veg_fruits_desc": "Gourmet selected premium frozen vegetables and fruits, flash-frozen to lock in natural flavor and nutrients."
     }
   },
   "categories": {
@@ -65,6 +67,8 @@
     "seafood": "Seafood",
     "dumplings": "Dumplings",
     "sweet_delight": "Sweet Delight",
+    "frozen_veg_fruits": "Frozen Vegetables & Fruits",
+    "other_products": "Other Products",
     "no_products": "No products found in this category yet. Coming soon!"
   },
   "product": {
@@ -75,8 +79,21 @@
     "return_to_collections": "Return to Collections",
     "quality_selected": "Quality selected product",
     "delivery_time": "Delivery in 24 to 36 hours",
-    "delivery_fee": "$0 delivery fee for orders over $200",
-    "weight_1lbs": "1 lbs - 454 g"
+    "delivery_fee": "Free delivery on orders over $80",
+    "weight_1lbs": "1 lbs - 454 g",
+    "size": "Size",
+    "select_size": "Select Size"
+  },
+  "sizes": {
+    "extra_big": "Extra Big",
+    "jumbo": "Jumbo",
+    "extra_large": "Extra Large",
+    "large": "Large",
+    "medium_large": "Medium Large",
+    "medium": "Medium",
+    "small": "Small",
+    "extra_small": "Extra Small",
+    "very_small": "Very Small"
   },
   "cart": {
     "empty_title": "Your Cart is Empty",
@@ -94,7 +111,9 @@
     "free": "Free",
     "total": "Total",
     "checkout": "Checkout",
-    "taxes_note": "Taxes and additional shipping calculated at checkout."
+    "taxes_note": "Taxes and additional shipping calculated at checkout.",
+    "free_delivery_threshold": "Free delivery on orders over $80",
+    "free_delivery_remaining": "Add {{amount}} more to qualify."
   },
   "delivery": {
     "title": "Delivery",
@@ -104,7 +123,7 @@
     "cost_title": "Delivery Cost",
     "cost_desc": "Delivery fees will be calculated using the postal code in the delivery fee calculator.",
     "free_title": "Free Delivery",
-    "free_desc": "Free for orders over $200",
+    "free_desc": "Free delivery on orders over $80",
     "confirmation": "Every delivery will be confirmed with a phone call before arriving at your address.",
     "zones_title": "Our Delivery Zones",
     "zones_desc": "We currently deliver to all major metropolitan areas. Check the map below to see if your area is covered.",
@@ -190,6 +209,40 @@
     "402": { "name": "Turkish Delight Pistachio", "description": "Classic Turkish delight with rich pistachio flavor.", "category": "Sweet Delight" },
     "403": { "name": "Turkish Delight Pomegranate", "description": "Delicate Turkish delight with a fruity pomegranate taste.", "category": "Sweet Delight" },
     "404": { "name": "Turkish Delight Almonds and Honey", "description": "Premium Turkish delight with almonds and natural honey flavor.", "category": "Sweet Delight" },
-    "405": { "name": "Turkish Delight Lemon and Roses", "description": "Elegant Turkish delight with lemon and rose notes.", "category": "Sweet Delight" }
+    "405": { "name": "Turkish Delight Lemon and Roses", "description": "Elegant Turkish delight with lemon and rose notes.", "category": "Sweet Delight" },
+    "215": { "name": "Black Tiger Raw Shrimp", "description": "Premium wild caught Black Tiger raw shrimp.", "category": "Seafood" },
+    "406": { "name": "Toblerone Cake", "description": "Rich, decadent cake made with authentic Swiss Toblerone chocolate and honey almond nougat.", "category": "Sweet Delight" },
+    "407": { "name": "King Crocs", "description": "Fun and flavorful crocodile-shaped gummy candies.", "category": "Sweet Delight" },
+    "408": { "name": "Bleu Drops", "description": "Premium blue drops candy with a sweet berry blast flavor.", "category": "Sweet Delight" },
+    "409": { "name": "Neon Bears", "description": "Vibrant neon gummy bears with sour and tangy fruit flavors.", "category": "Sweet Delight" },
+    "410": { "name": "Gummy Bears", "description": "Classic soft and chewy fruit-flavored gummy bears.", "category": "Sweet Delight" },
+    "411": { "name": "Gummy Rush Sour Party Mix", "description": "A fun and tangy assortment of sour gummy candies.", "category": "Sweet Delight" },
+    "412": { "name": "Gummy Rush Gummy Worms", "description": "Tangy and sweet dual-flavored gummy worms.", "category": "Sweet Delight" },
+    "413": { "name": "Gummy Rush Gummy Unicorn", "description": "Magical fruit-flavored gummy unicorns.", "category": "Sweet Delight" },
+    "414": { "name": "Gummy Rush Gummy Bears", "description": "Soft and delicious fruit-flavored premium gummy bears.", "category": "Sweet Delight" },
+    "415": { "name": "Gummy Rush Cola Bottles", "description": "Classic chewable cola-flavored gummy bottles.", "category": "Sweet Delight" },
+    "416": { "name": "Gummy Rush Berry Bliss", "description": "A rich mix of blueberry, raspberry, and strawberry gummy bites.", "category": "Sweet Delight" },
+    "417": { "name": "Gummy Rush Baby Bottles", "description": "Fun and sweet baby bottle-shaped gummy candies.", "category": "Sweet Delight" },
+    "418": { "name": "Gummy Rush Atomic Peaches", "description": "Explosive peach-flavored sweet and tangy gummies.", "category": "Sweet Delight" },
+    "501": { "name": "Frozen French Fries Magic Farm 2.5kg", "description": "Frozen French fries from Magic Farm, ready to cook.", "category": "Frozen Vegetables & Fruits" },
+    "502": { "name": "Frozen French Fries Magic Farm 1kg", "description": "Frozen French fries from Magic Farm, ready to cook.", "category": "Frozen Vegetables & Fruits" },
+    "503": { "name": "Frozen Artichoke Magic Farm", "description": "Frozen artichoke from Magic Farm.", "category": "Frozen Vegetables & Fruits" },
+    "504": { "name": "Frozen Mix Veg Magic Farm", "description": "Frozen mixed vegetables from Magic Farm.", "category": "Frozen Vegetables & Fruits" },
+    "505": { "name": "Frozen Cut Green Beans Magic Farm", "description": "Frozen cut green beans from Magic Farm.", "category": "Frozen Vegetables & Fruits" },
+    "506": { "name": "Frozen Green Peas Magic Farm", "description": "Frozen green peas from Magic Farm.", "category": "Frozen Vegetables & Fruits" },
+    "507": { "name": "Frozen Peas and Carrots Magic Farm", "description": "Frozen peas and carrots from Magic Farm.", "category": "Frozen Vegetables & Fruits" },
+    "508": { "name": "Frozen Broccoli Magic Farm", "description": "Frozen broccoli from Magic Farm.", "category": "Frozen Vegetables & Fruits" },
+    "509": { "name": "Frozen Green Peas Roselle", "description": "Frozen green peas from Roselle.", "category": "Frozen Vegetables & Fruits" },
+    "510": { "name": "Frozen Mix Veg Roselle", "description": "Frozen mixed vegetables from Roselle.", "category": "Frozen Vegetables & Fruits" },
+    "511": { "name": "Frozen Spinach Rosselle", "description": "Frozen spinach from Roselle.", "category": "Frozen Vegetables & Fruits" },
+    "512": { "name": "Frozen Pomegranate Seeds Roselle", "description": "Frozen pomegranate seeds from Roselle.", "category": "Frozen Vegetables & Fruits" },
+    "513": { "name": "Frozen Mango Roselle", "description": "Frozen mango from Roselle.", "category": "Frozen Vegetables & Fruits" },
+    "514": { "name": "Frozen Strawberry Roselle", "description": "Frozen strawberry from Roselle.", "category": "Frozen Vegetables & Fruits" },
+    "601": { "name": "Salty Sticks Labneh & Herbs", "description": "Savory salty sticks with labneh and herbs.", "category": "Other Products" },
+    "602": { "name": "Salty Sticks Thyme", "description": "Savory salty sticks with thyme.", "category": "Other Products" },
+    "603": { "name": "Salty Sticks Hot Pepper", "description": "Savory salty sticks with hot pepper.", "category": "Other Products" },
+    "604": { "name": "Salty Sticks Cumin", "description": "Savory salty sticks with cumin.", "category": "Other Products" },
+    "605": { "name": "Paratha 20 pcs", "description": "Layered paratha flatbread, 20 pieces.", "category": "Other Products" },
+    "606": { "name": "Paratha 5 pcs", "description": "Layered paratha flatbread, 5 pieces.", "category": "Other Products" }
   }
 }

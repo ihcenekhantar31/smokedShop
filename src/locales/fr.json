@@ -33,13 +33,14 @@
     "collections_title": "Explorez Nos Catégories",
     "category_tag": "Catégorie",
     "view_products": "Voir les Produits",
+    "shop_other_products": "Magasiner d’autres produits",
     "logistics_tag": "Logistique & Soins",
     "delivery_title": "Zone de Livraison",
     "delivery_desc": "Nous livrons dans la majorité de la zone métropolitaine avec un service local fiable et une manipulation soigneuse des commandes. Consultez la carte pour voir nos principales zones de livraison.",
     "delivery_notice_title": "Avis de Livraison",
     "delivery_notice_text": "Certaines livraisons peuvent prendre plus de temps que d'habitude, entre 24 et 36 heures.",
     "free_delivery_title": "Livraison Gratuite",
-    "free_delivery_text": "Toutes les livraisons de plus de 150 $ sont gratuites.",
+    "free_delivery_text": "Livraison gratuite pour les commandes de plus de 80 $",
     "view_policy": "Voir la Politique Complète",
     
     "specials": {
@@ -54,7 +55,8 @@
       "smoked_collection_desc": "Découvrez notre sélection de fumés signature, choisie pour sa saveur riche, sa texture et sa présentation élégante.",
       "seafood_desc": "Produits de la mer sélectionnés pour compléter votre table avec un goût et une variété premium.",
       "dumplings_desc": "Dumplings et pelmeni réconfortants sélectionnés pour des repas simples et satisfaisants.",
-      "sweet_delight_desc": "Une sélection douce et raffinée pour compléter votre commande avec des friandises élégantes."
+      "sweet_delight_desc": "Une sélection douce et raffinée pour compléter votre commande avec des friandises élégantes.",
+      "frozen_veg_fruits_desc": "Fruits et légumes surgelés de première qualité, surgelés rapidement pour préserver leur fraîcheur naturelle."
     }
   },
   "categories": {
@@ -65,6 +67,8 @@
     "seafood": "Fruits de Mer",
     "dumplings": "Dumplings",
     "sweet_delight": "Douceur Délicieuse",
+    "frozen_veg_fruits": "Légumes et fruits surgelés",
+    "other_products": "Autres produits",
     "no_products": "Aucun produit trouvé dans cette catégorie pour le moment. À venir bientôt !"
   },
   "product": {
@@ -75,8 +79,21 @@
     "return_to_collections": "Retour aux Collections",
     "quality_selected": "Produit de qualité sélectionné",
     "delivery_time": "Livraison en 24 à 36 heures",
-    "delivery_fee": "Frais de livraison de 0 $ pour les commandes de plus de 200 $",
-    "weight_1lbs": "1 lb - 454 g"
+    "delivery_fee": "Livraison gratuite pour les commandes de plus de 80 $",
+    "weight_1lbs": "1 lb - 454 g",
+    "size": "Taille",
+    "select_size": "Choisir la Taille"
+  },
+  "sizes": {
+    "extra_big": "Extra Gros",
+    "jumbo": "Jumbo",
+    "extra_large": "Très Grand",
+    "large": "Grand",
+    "medium_large": "Moyen-Grand",
+    "medium": "Moyen",
+    "small": "Petit",
+    "extra_small": "Extra Petit",
+    "very_small": "Très Petit"
   },
   "cart": {
     "empty_title": "Votre Panier est Vide",
@@ -94,7 +111,9 @@
     "free": "Gratuit",
     "total": "Total",
     "checkout": "Paiement",
-    "taxes_note": "Les taxes et frais d'expédition supplémentaires seront calculés lors du paiement."
+    "taxes_note": "Les taxes et frais d'expédition supplémentaires seront calculés lors du paiement.",
+    "free_delivery_threshold": "Livraison gratuite pour les commandes de plus de 80 $",
+    "free_delivery_remaining": "Ajoutez {{amount}} de plus pour en profiter."
   },
   "delivery": {
     "title": "Politique de",
@@ -104,7 +123,7 @@
     "cost_title": "Coût de Livraison",
     "cost_desc": "Les frais de livraison seront calculés à l'aide du code postal dans le calculateur de frais de livraison.",
     "free_title": "Livraison Gratuite",
-    "free_desc": "Gratuit pour les commandes de plus de 200 $",
+    "free_desc": "Livraison gratuite pour les commandes de plus de 80 $",
     "confirmation": "Chaque livraison sera confirmée par un appel téléphonique avant d'arriver à votre adresse.",
     "zones_title": "Nos Zones de Livraison",
     "zones_desc": "Nous livrons actuellement dans toutes les principales zones métropolitaines. Consultez la carte ci-dessous pour voir si votre zone est couverte.",
@@ -190,6 +209,40 @@
     "402": { "name": "Loukoum à la Pistache", "description": "Loukoum classique avec une riche saveur de pistache.", "category": "Douceur Délicieuse" },
     "403": { "name": "Loukoum à la Grenade", "description": "Loukoum délicat au goût fruité de grenade.", "category": "Douceur Délicieuse" },
     "404": { "name": "Loukoum aux Amandes et au Miel", "description": "Loukoum premium aux amandes et à la saveur naturelle de miel.", "category": "Douceur Délicieuse" },
-    "405": { "name": "Loukoum au Citron et aux Roses", "description": "Loukoum élégant aux notes de citron et de rose.", "category": "Douceur Délicieuse" }
+    "405": { "name": "Loukoum au Citron et aux Roses", "description": "Loukoum élégant aux notes de citron et de rose.", "category": "Douceur Délicieuse" },
+    "215": { "name": "Crevettes Crues Black Tiger", "description": "Crevettes crues sauvages Black Tiger de qualité supérieure.", "category": "Fruits de Mer" },
+    "406": { "name": "Gâteau Toblerone", "description": "Riche gâteau décadent préparé avec du chocolat Toblerone suisse authentique et du nougat au miel et aux amandes.", "category": "Douceur Délicieuse" },
+    "407": { "name": "King Crocs", "description": "Gélifiés amusants et savoureux en forme de crocodile.", "category": "Douceur Délicieuse" },
+    "408": { "name": "Gouttes Bleues", "description": "Bonbons bleus premium au goût explosif de baies sauvages.", "category": "Douceur Délicieuse" },
+    "409": { "name": "Oursons Néons", "description": "Oursons gélifiés néons vibrants aux saveurs de fruits acidulées.", "category": "Douceur Délicieuse" },
+    "410": { "name": "Oursons Gélifiés", "description": "Oursons gélifiés classiques doux et moelleux aux fruits.", "category": "Douceur Délicieuse" },
+    "411": { "name": "Gummy Rush Mix Party Acidulé", "description": "Un assortiment amusant et acidulé de bonbons gélifiés.", "category": "Douceur Délicieuse" },
+    "412": { "name": "Gummy Rush Vers Gélifiés", "description": "Vers gélifiés acidulés et sucrés aux doubles saveurs.", "category": "Douceur Délicieuse" },
+    "413": { "name": "Gummy Rush Licorne Gélifiée", "description": "Licornes gélifiées magiques aux saveurs de fruits.", "category": "Douceur Délicieuse" },
+    "414": { "name": "Gummy Rush Oursons Gélifiés", "description": "Oursons gélifiés de qualité supérieure doux et délicieux.", "category": "Douceur Délicieuse" },
+    "415": { "name": "Gummy Rush Bouteilles de Cola", "description": "Bouteilles gélifiées classiques à mâcher saveur cola.", "category": "Douceur Délicieuse" },
+    "416": { "name": "Gummy Rush Délice de Baies", "description": "Un riche mélange gélifié de myrtille, framboise et fraise.", "category": "Douceur Délicieuse" },
+    "417": { "name": "Gummy Rush Biberons", "description": "Bonbons gélifiés amusants en forme de biberon.", "category": "Douceur Délicieuse" },
+    "418": { "name": "Gummy Rush Pêches Atomiques", "description": "Pêches gélifiées explosives, sucrées et acidulées.", "category": "Douceur Délicieuse" },
+    "501": { "name": "Frites Magic Farm surgelées 2.5kg", "description": "Frites surgelées Magic Farm, prêtes à cuire.", "category": "Légumes et fruits surgelés" },
+    "502": { "name": "Frites Magic Farm surgelées 1kg", "description": "Frites surgelées Magic Farm, prêtes à cuire.", "category": "Légumes et fruits surgelés" },
+    "503": { "name": "Artichaut Magic Farm surgelé", "description": "Artichaut surgelé Magic Farm.", "category": "Légumes et fruits surgelés" },
+    "504": { "name": "Légumes mélangés Magic Farm surgelés", "description": "Légumes mélangés surgelés Magic Farm.", "category": "Légumes et fruits surgelés" },
+    "505": { "name": "Haricots verts coupés Magic Farm surgelés", "description": "Haricots verts coupés surgelés Magic Farm.", "category": "Légumes et fruits surgelés" },
+    "506": { "name": "Petits pois Magic Farm surgelés", "description": "Petits pois surgelés Magic Farm.", "category": "Légumes et fruits surgelés" },
+    "507": { "name": "Petits pois et carottes Magic Farm surgelés", "description": "Petits pois et carottes surgelés Magic Farm.", "category": "Légumes et fruits surgelés" },
+    "508": { "name": "Brocoli Magic Farm surgelé", "description": "Brocoli surgelé Magic Farm.", "category": "Légumes et fruits surgelés" },
+    "509": { "name": "Petits pois Roselle surgelés", "description": "Petits pois surgelés Roselle.", "category": "Légumes et fruits surgelés" },
+    "510": { "name": "Légumes mélangés Roselle surgelés", "description": "Légumes mélangés surgelés Roselle.", "category": "Légumes et fruits surgelés" },
+    "511": { "name": "Épinards Rosselle surgelés", "description": "Épinards surgelés Roselle.", "category": "Légumes et fruits surgelés" },
+    "512": { "name": "Graines de grenade Roselle surgelées", "description": "Graines de grenade surgelées Roselle.", "category": "Légumes et fruits surgelés" },
+    "513": { "name": "Mangue Roselle surgelée", "description": "Mangue surgelée Roselle.", "category": "Légumes et fruits surgelés" },
+    "514": { "name": "Fraises Roselle surgelées", "description": "Fraises surgelées Roselle.", "category": "Légumes et fruits surgelés" },
+    "601": { "name": "Salty Sticks Labneh & Herbs", "description": "Bâtonnets salés savoureux au labneh et aux herbes.", "category": "Autres produits" },
+    "602": { "name": "Salty Sticks Thyme", "description": "Bâtonnets salés savoureux au thym.", "category": "Autres produits" },
+    "603": { "name": "Salty Sticks Hot Pepper", "description": "Bâtonnets salés savoureux au piment fort.", "category": "Autres produits" },
+    "604": { "name": "Salty Sticks Cumin", "description": "Bâtonnets salés savoureux au cumin.", "category": "Autres produits" },
+    "605": { "name": "Paratha 20 pcs", "description": "Pain plat paratha feuilleté, 20 pièces.", "category": "Autres produits" },
+    "606": { "name": "Paratha 5 pcs", "description": "Pain plat paratha feuilleté, 5 pièces.", "category": "Autres produits" }
   }
 }

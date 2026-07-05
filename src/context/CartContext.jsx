@@ -14,13 +14,38 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem('premium-cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (product) => {
+  const addToCart = (product, quantity = 1) => {
     setCartItems(prev => {
-      const existing = prev.find(item => item.id === product.id);
-      if (existing) {
-        return prev.map(item => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item);
+      let selectedSize = product.selectedSize;
+      let price = product.price;
+      
+      if (product.sizes && product.sizes.length > 0) {
+        if (!selectedSize) {
+          const defaultVariant = product.sizes[0];
+          selectedSize = defaultVariant.size;
+          price = defaultVariant.price;
+        } else {
+          const variant = product.sizes.find(s => s.size === selectedSize);
+          if (variant) {
+            price = variant.price;
+          }
+        }
       }
-      return [...prev, { ...product, quantity: 1 }];
+
+      const cartItemId = selectedSize ? `${product.id}-${selectedSize}` : `${product.id}`;
+
+      const existing = prev.find(item => item.id === cartItemId);
+      if (existing) {
+        return prev.map(item => item.id === cartItemId ? { ...item, quantity: item.quantity + quantity } : item);
+      }
+      return [...prev, { 
+        ...product, 
+        id: cartItemId, 
+        productId: product.id, 
+        selectedSize, 
+        price, 
+        quantity 
+      }];
     });
   };
 

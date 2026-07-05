@@ -35,19 +35,34 @@ const Footer = () => {
 
           <ul className="space-y-3 text-sm">
             <li>
-              <a href="#" className="hover:text-white transition-colors">
+              <a
+                href="https://www.tiktok.com/@smokedshop5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-brand-orange hover:underline transition-colors"
+              >
                 TikTok
               </a>
             </li>
 
             <li>
-              <a href="#" className="hover:text-white transition-colors">
+              <a
+                href="https://www.instagram.com/smokedshop_mtl/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-brand-orange hover:underline transition-colors"
+              >
                 Instagram
               </a>
             </li>
 
             <li>
-              <a href="#" className="hover:text-white transition-colors">
+              <a
+                href="https://www.facebook.com/profile.php?id=61589282331735"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-brand-orange hover:underline transition-colors"
+              >
                 Facebook
               </a>
             </li>

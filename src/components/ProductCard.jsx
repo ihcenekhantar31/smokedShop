@@ -9,15 +9,19 @@ const ProductCard = ({ product }) => {
   const name = t(`products.${product.id}.name`, { defaultValue: product.name });
   const description = t(`products.${product.id}.description`, { defaultValue: product.description });
   const category = t(`products.${product.id}.category`, { defaultValue: product.category });
+  const usesContainedImage = product.category === 'Frozen Veg Fruits' || product.category === 'Other Products';
 
   return (
     <div className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100">
-      <Link to={`/product/${product.id}`} className="relative h-64 overflow-hidden block bg-gray-50">
+      <Link
+        to={`/product/${product.id}`}
+        className={`relative h-64 overflow-hidden ${usesContainedImage ? 'flex items-center justify-center bg-white p-4' : 'block bg-gray-50'}`}
+      >
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors z-10 duration-300" />
         <img 
           src={product.image} 
           alt={product.name} 
-          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-in-out"
+          className={`w-full h-full object-center transition-transform duration-700 ease-in-out ${usesContainedImage ? 'object-contain' : 'object-cover transform group-hover:scale-105'}`}
         />
       </Link>
       
